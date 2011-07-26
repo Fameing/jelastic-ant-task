@@ -171,7 +171,7 @@
                 <configuration>
                     <username>${google.code.username}</username>
                     <password>${google.code.password}</password>
-                    <tagBase>https://jelastic-ant-plugin.googlecode.com/svn/tags</tagBase>
+                    <tagBase>https://jelastic-ant-task.googlecode.com/svn/tags</tagBase>
                     <releaseProfiles>release</releaseProfiles>
                     <goals>deploy assembly:single</goals>
                 </configuration>
@@ -198,24 +198,24 @@
     </developers>
     <issueManagement>
         <system>Google Code Issue Tracking</system>
-        <url>https://code.google.com/p/jelastic-ant-plugin/issues/list</url>
+        <url>https://code.google.com/p/jelastic-ant-task/issues/list</url>
     </issueManagement>
     <scm>
-        <connection>scm:svn:https://jelastic-ant-plugin.googlecode.com/svn/trunk/</connection>
-        <developerConnection>scm:svn:https://jelastic-ant-plugin.googlecode.com/svn/trunk/</developerConnection>
-        <url>https://jelastic-ant-plugin.googlecode.com/svn/trunk/</url>
+        <connection>scm:svn:https://jelastic-ant-task.googlecode.com/svn/trunk/</connection>
+        <developerConnection>scm:svn:https://jelastic-ant-task.googlecode.com/svn/trunk/</developerConnection>
+        <url>https://jelastic-ant-task.googlecode.com/svn/trunk/</url>
     </scm>
 
     <distributionManagement>
         <repository>
             <id>jelastic.googlecode.releases</id>
             <name>jelastic.googlecode.releases</name>
-            <url>dav:https://jelastic-ant-plugin.googlecode.com/svn/maven/repository</url>
+            <url>dav:https://jelastic-ant-task.googlecode.com/svn/maven/repository</url>
         </repository>
         <snapshotRepository>
             <id>jelastic.googlecode.snapshots</id>
             <name>jelastic.googlecode.snapshots</name>
-            <url>dav:https://jelastic-ant-plugin.googlecode.com/svn/maven/repository-snapshot</url>
+            <url>dav:https://jelastic-ant-task.googlecode.com/svn/maven/repository-snapshot</url>
         </snapshotRepository>
     </distributionManagement>
 
