@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.jelastic</groupId>
+  <artifactId>jelastic-ant-task</artifactId>
+  <versioning>
+    <versions>
+      <version>1.0-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20110726091344</lastUpdated>
+  </versioning>
+</metadata>
