@@ -1,9 +1,8 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.jelastic</groupId>
     <artifactId>jelastic-ant-task</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
     <name>jelastic-ant-task</name>
     <url>http://maven.apache.org</url>
@@ -201,9 +200,9 @@
         <url>https://code.google.com/p/jelastic-ant-task/issues/list</url>
     </issueManagement>
     <scm>
-        <connection>scm:svn:https://jelastic-ant-task.googlecode.com/svn/trunk/</connection>
-        <developerConnection>scm:svn:https://jelastic-ant-task.googlecode.com/svn/trunk/</developerConnection>
-        <url>https://jelastic-ant-task.googlecode.com/svn/trunk/</url>
+        <connection>scm:svn:https://jelastic-ant-task.googlecode.com/svn/tags/jelastic-ant-task-1.0</connection>
+        <developerConnection>scm:svn:https://jelastic-ant-task.googlecode.com/svn/tags/jelastic-ant-task-1.0</developerConnection>
+        <url>https://jelastic-ant-task.googlecode.com/svn/tags/jelastic-ant-task-1.0</url>
     </scm>
 
     <distributionManagement>
@@ -229,7 +228,7 @@
             <url>http://maven.jelastic.com/libs-release/</url>
         </repository>
         <repository>
-            <snapshots/>
+            <snapshots />
             <id>snapshots</id>
             <name>libs-snapshot</name>
             <url>http://maven.jelastic.com/libs-snapshot/</url>
@@ -245,7 +244,7 @@
             <url>http://maven.jelastic.com/plugins-release/</url>
         </pluginRepository>
         <pluginRepository>
-            <snapshots/>
+            <snapshots />
             <id>snapshots</id>
             <name>plugins-snapshot</name>
             <url>http://maven.jelastic.com/plugins-snapshot/</url>
