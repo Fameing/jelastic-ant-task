@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.jelastic</groupId>
     <artifactId>jelastic-ant-task</artifactId>
-    <version>1.0</version>
+    <version>1.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>jelastic-ant-task</name>
     <url>http://maven.apache.org</url>
@@ -200,9 +200,9 @@
         <url>https://code.google.com/p/jelastic-ant-task/issues/list</url>
     </issueManagement>
     <scm>
-        <connection>scm:svn:https://jelastic-ant-task.googlecode.com/svn/tags/jelastic-ant-task-1.0</connection>
-        <developerConnection>scm:svn:https://jelastic-ant-task.googlecode.com/svn/tags/jelastic-ant-task-1.0</developerConnection>
-        <url>https://jelastic-ant-task.googlecode.com/svn/tags/jelastic-ant-task-1.0</url>
+        <connection>scm:svn:https://jelastic-ant-task.googlecode.com/svn/trunk/</connection>
+        <developerConnection>scm:svn:https://jelastic-ant-task.googlecode.com/svn/trunk/</developerConnection>
+        <url>https://jelastic-ant-task.googlecode.com/svn/trunk/</url>
     </scm>
 
     <distributionManagement>
