@@ -6,6 +6,9 @@ package com.jelastic.model;
  * Time: 4:13 PM
  */
 public class Deploy {
+
+    //{"response":{"result":0,"responses":[{"result":0,"nodeid":1566,"out":"gfhdf"}]},"result":0,"debug":{"time":17593,"cpu":{"usage":0.01421001,"time":20}}}
+
     private JelasticResponse response;
     private int result;
     private String error;
@@ -23,6 +26,7 @@ public class Deploy {
 
      public static class JelasticResponse {
         private int result;
+        private JelasticResponses[] responses;
         private String error;
         private String out;
 
@@ -32,6 +36,14 @@ public class Deploy {
 
          public void setResult(int result) {
              this.result = result;
+         }
+
+         public JelasticResponses[] getResponses() {
+             return responses;
+         }
+
+         public void setResponses(JelasticResponses[] responses) {
+             this.responses = responses;
          }
 
          public String getError() {
@@ -48,6 +60,36 @@ public class Deploy {
 
          public void setOut(String out) {
              this.out = out;
+         }
+
+         public static class JelasticResponses {
+             private int result;
+             private int nodeid;
+             private String out;
+
+             public int getResult() {
+                 return result;
+             }
+
+             public void setResult(int result) {
+                 this.result = result;
+             }
+
+             public int getNodeid() {
+                 return nodeid;
+             }
+
+             public void setNodeid(int nodeid) {
+                 this.nodeid = nodeid;
+             }
+
+             public String getOut() {
+                 return out;
+             }
+
+             public void setOut(String out) {
+                 this.out = out;
+             }
          }
      }
 
