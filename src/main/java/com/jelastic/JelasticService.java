@@ -35,11 +35,7 @@ import java.util.List;
  */
 public class JelasticService {
     private String shema = "http";
-    private String hostApp = "app.hivext.com";
-    private String hostApi = "api.hivext.com";
-    private String hostApiDe = "de-hetzner.hivext.com";
-    private String hostLogs = "178.159.250.35";
-    private String jelastiсAppid = "8129583aae37a4b556d36dbd56abbc68";
+    private String apiJelastic = "api.jelastic.com";
 
     private int port = -1;
     private String version = "1.0";
@@ -48,9 +44,26 @@ public class JelasticService {
     private String urlAuthentication = "/" + version + "/users/authentication/rest/signin";
     private String urlUploader = "/" + version + "/storage/uploader/rest/upload";
     private String urlCreateObject = "/" + version + "/data/base/rest/createobject";
-    private String urlEval = "/" + version + "/development/scripting/rest/eval";
+    private String urlDeploy = /*"/" + version + "*/"/deploy/DeployArchive";
     private static ObjectMapper mapper = new ObjectMapper();
     private Project project;
+
+
+    public String getApiJelastic() {
+        return apiJelastic;
+    }
+
+    public void setApiJelastic(String apiJelastic) {
+        this.apiJelastic = apiJelastic;
+    }
+
+    public String getUrlDeploy() {
+        return urlDeploy;
+    }
+
+    public void setUrlDeploy(String urlDeploy) {
+        this.urlDeploy = urlDeploy;
+    }
 
     public JelasticService(Project project) {
         this.project = project;
@@ -60,28 +73,8 @@ public class JelasticService {
         project = proj;
     }
 
-    public String getJelastiсAppid() {
-        return jelastiсAppid;
-    }
-
     public String getShema() {
         return shema;
-    }
-
-    public String getHostApp() {
-        return hostApp;
-    }
-
-    public String getHostApi() {
-        return hostApi;
-    }
-
-    public String getHostApiDe() {
-        return hostApiDe;
-    }
-
-    public String getHostLogs() {
-        return hostLogs;
     }
 
     public int getPort() {
@@ -104,10 +97,6 @@ public class JelasticService {
         return urlCreateObject;
     }
 
-    public String getUrlEval() {
-        return urlEval;
-    }
-
     public Authentication authentication(String email, String password) {
         Authentication authentication = null;
 
@@ -115,10 +104,9 @@ public class JelasticService {
             DefaultHttpClient httpclient = new DefaultHttpClient();
 
             List<NameValuePair> qparams = new ArrayList<NameValuePair>();
-            qparams.add(new BasicNameValuePair("appid", getJelastiсAppid()));
             qparams.add(new BasicNameValuePair("login", email));
             qparams.add(new BasicNameValuePair("password", password));
-            URI uri = URIUtils.createURI(getShema(), getHostApp(), getPort(), getUrlAuthentication(), URLEncodedUtils.format(qparams, "UTF-8"), null);
+            URI uri = URIUtils.createURI(getShema(), getApiJelastic(), getPort(), getUrlAuthentication(), URLEncodedUtils.format(qparams, "UTF-8"), null);
             project.log(uri.toString(),Project.MSG_DEBUG);
             HttpGet httpGet = new HttpGet(uri);
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
@@ -148,13 +136,12 @@ public class JelasticService {
             }
 
             MultipartEntity multipartEntity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
-            multipartEntity.addPart("appid", new StringBody(getJelastiсAppid()));
             multipartEntity.addPart("fid", new StringBody("123456"));
             multipartEntity.addPart("session", new StringBody(authentication.getSession()));
             multipartEntity.addPart("file", new FileBody(file));
 
 
-            URI uri = URIUtils.createURI(getShema(), getHostApi(), getPort(), getUrlUploader(), null, null);
+            URI uri = URIUtils.createURI(getShema(), getApiJelastic(), getPort(), getUrlUploader(), null, null);
             project.log(uri.toString(),Project.MSG_DEBUG);
             HttpPost httpPost = new HttpPost(uri);
             httpPost.setEntity(multipartEntity);
@@ -181,13 +168,12 @@ public class JelasticService {
 
             List<NameValuePair> nameValuePairList = new ArrayList<NameValuePair>();
             nameValuePairList.add(new BasicNameValuePair("charset", "UTF-8"));
-            nameValuePairList.add(new BasicNameValuePair("appid", getJelastiсAppid()));
             nameValuePairList.add(new BasicNameValuePair("session", authentication.getSession()));
             nameValuePairList.add(new BasicNameValuePair("type", "JDeploy"));
             nameValuePairList.add(new BasicNameValuePair("data", "{'name':'" + filename + "', 'archive':'" + upLoader.getFile() + "', 'link':0, 'size':" + upLoader.getSize() + ", 'comment':'" + filename + "'}"));
 
             UrlEncodedFormEntity entity = new UrlEncodedFormEntity(nameValuePairList, "UTF-8");
-            URI uri = URIUtils.createURI(getShema(), getHostApp(), getPort(), getUrlCreateObject(), null, null);
+            URI uri = URIUtils.createURI(getShema(), getApiJelastic(), getPort(), getUrlCreateObject(), null, null);
             project.log(uri.toString(), Project.MSG_DEBUG);
             HttpPost httpPost = new HttpPost(uri);
             httpPost.setEntity(entity);
@@ -215,15 +201,13 @@ public class JelasticService {
 
             List<NameValuePair> qparams = new ArrayList<NameValuePair>();
             qparams.add(new BasicNameValuePair("charset", "UTF-8"));
-            qparams.add(new BasicNameValuePair("appid", getJelastiсAppid()));
             qparams.add(new BasicNameValuePair("session", authentication.getSession()));
-            qparams.add(new BasicNameValuePair("script", "deploy/DeployArchive"));
             qparams.add(new BasicNameValuePair("archiveUri", upLoader.getFile()));
             qparams.add(new BasicNameValuePair("archiveName", upLoader.getName()));
             qparams.add(new BasicNameValuePair("newContext", context));
             qparams.add(new BasicNameValuePair("domain", environment));
 
-            URI uri = URIUtils.createURI(getShema(), getHostApiDe(), getPort(), getUrlEval(), URLEncodedUtils.format(qparams, "UTF-8"), null);
+            URI uri = URIUtils.createURI(getShema(), getApiJelastic(), getPort(), getUrlDeploy(), URLEncodedUtils.format(qparams, "UTF-8"), null);
             project.log(uri.toString(), Project.MSG_DEBUG);
             HttpGet httpPost = new HttpGet(uri);
             ResponseHandler<String> responseHandler = new BasicResponseHandler();
